@@ -1,0 +1,207 @@
+<!--
+	hangit.io, an online hangman game!
+	GitHub repository: https://github.com/matteoo34/hangit.io
+	Made by Thomas Quinton, Moulaylï Saidi and Mattéo Legagneux
+	Copyright (C) 2021
+-->
+
+<!DOCTYPE html>
+
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="A hangman game directly playable within your browser!">
+		<meta name="keywords" content="hang, it, hangman, game, online, browser, thomas, quinton, moulaylï, saidi, mattéo, legagneux">
+		<meta name="author" content="Thomas Quinton, Moulaylï Saidi, Mattéo Legagneux">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://matteoo34.github.io/hangit.io">
+		<meta property="og:site_name" content="hangit.io">
+		<meta property="og:title" content="hangit.io">
+		<meta property="og:description" content="Jouez au jeu du pendu directement dans votre navigateur !">
+		<meta property="og:image" content="https://matteoo34.github.io/hangit.io/favicon.ico">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<link rel="apple-touch-icon" type="image/x-icon" href="favicon.ico">
+		<link rel="stylesheet" href="assets/css/main.css">
+		<title>hangit.io</title>
+	</head>
+
+	<body>
+		<!-- Overlay -->
+		<div class="Overlay">
+			<!-- Current round indication -->
+			<div class="Layer RoundLayer">
+				Round <span class="RoundNumber"></span>
+			</div>
+			<!-- Current round player is choosing a word -->
+			<div class="Layer RoundPlayerLayer">
+				<span class="RoundPlayer"></span> est en train de choisir un mot...
+			</div>
+			<!-- Current round player end -->
+			<div class="Layer RoundPlayerEndLayer">
+				Fin du tour pour <span class="RoundPlayerEnd"></span> !
+			</div>
+			<!-- Host game form -->
+			<div class="Modal HostFormModal">
+				<h3>Héberger une partie</h3>
+				<div class="InputContainer">
+					<label class="RangeLabel" for="MaxRoundsInput">
+						Nombre de tours
+						<span class="RangeValue">1</span>
+					</label>
+					<input type="range" min="1" max="4" id="MaxRoundsInput">
+				</div>
+				<div class="InnerContainer ConnectedPlayers">
+					<span>Joueurs connectés — <span class="ConnectedPlayersCount">0</span></span>
+					<div class="ReadyPlayersList"></div>
+				</div>
+				<div class="InnerContainer Link">
+					<input type="text" id="InvitationLinkInput" readonly>
+					<button type="button" id="CopyLink">Copier le lien</button>
+				</div>
+				<div class="ModalActions">
+					<button type="button" id="StartHostGame" disabled>Commencer la partie</button>
+				</div>
+			</div>
+			<!-- Word submit container -->
+			<form class="Modal SubmitWordModal" autocomplete="off">
+				<h3>C'est à vous !</h3>
+				<div class="WordForm">
+					<input type="text" id="WordInput">
+					<label class="TextLabel" for="WordInput">Choisissez un mot</label>
+					<div class="InputInfo">
+						Vous pouvez utiliser :<br>
+						- des caractères alphabétiques<br>
+						- des espaces<br>
+						- des tirets (-)<br>
+						Au moins 4 caractères !
+					</div>
+				</div>
+				<div class="ModalActions">
+					<button type="submit" id="SubmitWord" disabled>C'est parti !</button>
+				</div>
+			</form>
+		</div>
+		<!-- Wrapper (overlay effect) -->
+		<div class="Wrapper">
+			<!-- Header -->
+			<header>
+				<img src="assets/images/logo.png">
+				<h1 class="PageTitle">hangit.io</h1>
+			</header>
+			<!-- Content -->
+			<main>
+				<!-- Nickname form -->
+				<div class="Container NicknameContainer">
+					<h3>Quel est votre pseudo ?</h3>
+					<div class="NicknameForm">
+						<input type="text" id="NicknameInput">
+						<label class="TextLabel" for="NicknameInput">Invité</label>
+					</div>
+					<span class="RepeatedNicknamesTip">⚠️ Vous ne pourrez pas prendre le même pseudonyme qu'un autre joueur.</span>
+				</div>
+				<!-- Open host form container -->
+				<div class="Container OpenHostFormContainer">
+					<button id="OpenHostForm">Héberger une partie</button>
+				</div>
+				<!-- Join game container -->
+				<div class="Container JoinGameContainer">
+					<button id="JoinGame">Rejoindre la partie</button>
+				</div>
+				<!-- Game container -->
+				<div class="GameContainer">
+					<div class="ConnectedPlayersList">
+					</div>
+					<div class="GameInnerContainer">
+						<!-- Current round information -->
+						<div class="RoundIndicator">
+							Round <span class="CurrentRound"></span> / <span class="MaxRounds"></span>
+						</div>
+						<!-- Hidden word, canvas and chat -->
+						<div class="GameInnerContainer2">
+							<div class="GameInnerContainer3">
+								<!-- Hidden word -->
+								<div class="HiddenWordContainer">
+									<div id="HiddenWordAuthorContent">Devinez le mot de <span id="HiddenWordAuthor"></span> !</div>
+									<span id="HiddenWord"></span>
+								</div>
+								<!-- Canvas -->
+								<div class="CanvasContainer">
+									<h3 class="RemainingTries">11 essais restants.</h3>
+									<canvas id="Canvas"></canvas>
+								</div>
+							</div>
+							<!-- Chat -->
+							<div class="ChatContainer">
+								<!-- Message list -->
+								<ol class="MessageList"></ol>
+								<!-- Send message form -->
+								<form class="MessageForm" autocomplete="off">
+									<input type="text" name="message" id="MessageInput" placeholder="Message...">
+									<button type="submit" id="SendMessage" title="Envoyer" disabled>
+										<span class="SendMessageIcon"></span>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End game container -->
+				<div class="Container RestartGameContainer">
+					<h3 class="GameStatus">🎉 Partie terminée ! 🎉</h3>
+					<div class="ScoreList">
+						<!-- <div class="PlayerScoreContainer Player">
+							<span class="Icon">🥇</span>
+							<div class="PlayerScore">
+								<span class="PlayerValue"></span>
+								<span class="ScoreValue"></span>
+							</div>
+						</div>
+						<div class="PlayerScoreContainer Player">
+							<span class="Icon">🥈</span>
+							<div class="PlayerScore">
+								<span class="PlayerValue"></span>
+								<span class="ScoreValue"></span>
+							</div>
+						</div>
+						<div class="PlayerScoreContainer Player">
+							<span class="Icon">🥉</span>
+							<div class="PlayerScore">
+								<span class="PlayerValue"></span>
+								<span class="ScoreValue"></span>
+							</div>
+						</div> -->
+						<!-- <div class="PlayerScoreContainer Player">
+							<span class="Icon">💩</span>
+							<div class="PlayerScore">
+								<span class="PlayerValue"></span>
+								<span class="ScoreValue"></span>
+							</div>
+						</div> -->
+					</div>
+					<form action="https://www.paypal.com/donate" method="post" target="_top" class="PayPalForm">
+						<input type="hidden" name="hosted_button_id" value="G5BDL4PYRFYZW">
+						<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Faites un don avec PayPal">
+						<img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+					</form>
+					<div class="ContainerActions">
+						<button id="RestartGame">Recommencer</button>
+					</div>
+				</div>
+				<!-- Help for joining hosted games -->
+				<span class="GameTip"></span>
+			</main>
+		</div>
+		<!-- Scripts -->
+		<script src="assets/js/init.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/SendMessage.js"></script>
+		<script src="assets/js/SetNickname.js"></script>
+		<script src="assets/js/HiddenWord.js"></script>
+		<script src="assets/js/FindWord.js"></script>
+		<script src="assets/js/Canvas.js"></script>
+	</body>
+
+</html>

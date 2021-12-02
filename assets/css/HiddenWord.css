@@ -1,0 +1,7 @@
+.HiddenWordContainer {margin-bottom: 16px}
+
+#HiddenWord {
+	font-size: 30px;
+	letter-spacing: 4px;
+	word-wrap: break-word
+}

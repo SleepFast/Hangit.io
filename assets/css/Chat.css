@@ -1,0 +1,79 @@
+/** Chat content **/
+
+.ChatContainer {
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	overflow: hidden;
+	border-radius: 4px;
+	background-color: var(--primary-light)
+}
+
+/* Message container */
+.MessageList {
+	flex-grow: 1;
+	margin: 0;
+	padding: 0 0 8px 0;
+	overflow-y: scroll;
+	list-style-type: none
+}
+
+/* Single message element */
+.Message {padding: 4px 4px 0 4px}
+
+/* Message sender */
+.MessageAuthor {
+	color: var(--secondary);
+	font-size: 14px;
+	font-style: italic
+}
+
+/* Message content */
+.MessageInner {word-wrap: break-word}
+
+/* Message & date */
+.MessageDate {
+	margin-left: 4px;
+	overflow: hidden;
+	color: var(--primary-dark);
+	text-overflow: ellipsis;
+	font-size: 12px
+}
+.MessageDate::before {content: "• "}
+
+/* Message send form */
+.MessageForm {
+	display: flex;
+	border-top: 1px solid var(--primary)
+}
+
+#MessageInput {
+	flex-grow: 1;
+	padding: 8px 4px;
+	font-size: 16px
+}
+#MessageInput::placeholder {opacity: 0.3}
+
+#SendMessage {
+	padding: 0 4px;
+	border-radius: 0;
+	color: var(--secondary);
+	font-size: 14px;
+	letter-spacing: -0.5px;
+	transition-duration: 0.2s
+}
+#SendMessage:not([disabled]):hover {background-color: rgba(0, 0, 0, 0.1)}
+#SendMessage:not([disabled]):active {
+	-webkit-transform: none;
+	transform: none
+}
+
+.SendMessageIcon {
+	display: block;
+	width: 30px;
+	height: 100%;
+	background: url(../images/viouuuw.png) center no-repeat;
+	background-size: 100%;
+	transition-duration: 0.1s
+}
+#SendMessage:not([disabled]):active .SendMessageIcon {background-size: 85%}

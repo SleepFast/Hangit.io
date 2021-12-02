@@ -1,0 +1,61 @@
+/** Win/lose container **/
+
+.RestartGameContainer {
+	display: none;
+	flex-direction: column;
+	align-items: center
+}
+
+/* Win/lose title */
+.RestartGameContainer .GameStatus {
+	color: var(--valid);
+	text-align: center
+}
+
+/* Score list */
+.ScoreList {
+	width: 200px;
+	margin: 8px 0
+}
+
+/* Player score */
+.PlayerScoreContainer {
+	display: flex;
+	padding: 4px 8px;
+	margin-bottom: 8px;
+	border-radius: 8px;
+	background-color: var(--primary-light)
+}
+.PlayerScoreContainer:nth-child(1) {background-color: var(--podium-gold)}
+.PlayerScoreContainer:nth-child(2) {background-color: var(--podium-silver)}
+.PlayerScoreContainer:nth-child(3) {background-color: var(--podium-bronze)}
+
+.PlayerScoreContainer .Icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 8px
+}
+
+.RestartGameContainer .PlayerScore {
+	display: flex;
+	flex-direction: column
+}
+
+.RestartGameContainer .PlayerValue {font-size: 18px}
+.RestartGameContainer .ScoreValue {opacity: 0.65}
+
+/* Restart button */
+.RestartGameContainer .ContainerActions {
+	width: 100%;
+	margin-top: 8px
+}
+
+#RestartGame {flex-grow: 1}
+
+/* Donate form */
+
+.PayPalForm {
+	display: flex;
+	margin: 16px 0
+}

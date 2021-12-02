@@ -1,0 +1,38 @@
+/** Overlay & wrapper **/
+
+/* Wrapper container */
+.Wrapper {
+	min-height: 100vh;
+	background-color: var(--primary);
+	letter-spacing: -0.5px
+}
+.Wrapper.overlayed {
+	-webkit-filter: blur(2px) grayscale(0.5);
+	filter: blur(2px) grayscale(0.5);
+	transition-duration: 0.2s
+}
+
+/* Overlay container */
+.Overlay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	opacity: 1;
+	background-color: rgba(0, 0, 0, 0.5);
+	-webkit-animation: FadeOut 0.2s forwards;
+	animation: FadeOut 0.2s forwards;
+	z-index: 1
+}
+.Overlay.displayed {
+	-webkit-animation-name: FadeIn;
+	animation-name: FadeIn
+}

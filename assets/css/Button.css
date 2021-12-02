@@ -1,0 +1,26 @@
+/** Buttons **/
+
+button {
+	-webkit-appearance: none;
+	padding: 4px 8px;
+	outline: none;
+	border: none;
+	border-radius: 4px;
+	opacity: 1;
+	background-color: transparent;
+	color: #ffa000;
+	cursor: pointer;
+	font-size: 18px;
+	letter-spacing: 0;
+	transition-duration: 0.2s
+}
+button:not([disabled]):hover, button:not([disabled]):active {background-color: var(--primary-light)}
+button:not([disabled]):active {
+	-webkit-transform: scale(0.9);
+	transform: scale(0.9);
+	transition-duration: 0.1s
+}
+button[disabled] {
+	opacity: 0.5;
+	cursor: not-allowed
+}

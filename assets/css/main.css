@@ -1,0 +1,185 @@
+/** Main styles **/
+
+/* CSS imports */
+@import url(Overlay.css);
+@import url(Layer.css);
+@import url(Modal.css);
+@import url(Header.css);
+@import url(Container.css);
+@import url(GameContainer.css);
+@import url(RoundIndicator.css);
+@import url(HiddenWord.css);
+@import url(Canvas.css);
+@import url(Chat.css);
+@import url(RestartGame.css);
+@import url(GameTip.css);
+@import url(Form.css);
+@import url(Button.css);
+
+/* Lilita One */
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+
+/* Apply font */
+
+* {font-family: "Lilita One", sans-serif}
+
+h1, h3 {
+	margin: 12px 0;
+	font-weight: normal
+}
+
+/* Text selection color */
+
+/* Darker selection */
+::-moz-selection,
+#InvitationLinkInput::-moz-selection {
+	background-color: rgba(0, 0, 0, 0.15)
+}
+::selection,
+#InvitationLinkInput::selection {
+	background-color: rgba(0, 0, 0, 0.15)
+}
+
+/* --primary-light */
+h3::-moz-selection,
+.RangeLabel::-moz-selection,
+.RangeValue::-moz-selection,
+#WordInput::-moz-selection,
+.HiddenWordContainer *::-moz-selection {
+	background-color: var(--primary-light)
+}
+h3::selection,
+.RangeLabel::selection,
+.RangeValue::selection,
+#WordInput::selection,
+.HiddenWordContainer *::selection {
+	background-color: var(--primary-light)
+}
+
+/* --nickname-color-light */
+#NicknameInput::-moz-selection,
+.TextLabel::-moz-selection {
+	background-color: var(--nickname-color-light)
+}
+#NicknameInput::selection,
+.TextLabel::selection {
+	background-color: var(--nickname-color-light)
+}
+
+/* Variables */
+:root {
+	--primary: #ffb300; /* Orange */
+	--primary-dark: #a8a496; /* Dark orange */
+	--primary-light: #f2ecd9; /* Light orange */
+	--secondary: #cc8f00; /* Dark orange */
+	--secondary-dark: #7f5900; /* Darker orange */
+	--nickname-color: 0; /* Nickname random color */
+	--nickname-color-light: 0; /* Nickname random color (light) */
+	--valid: #41ad49; /* Nice green */
+	--invalid: #de1744; /* Error red */
+	--podium-gold: #ffdf82; /* Gold medal */
+	--podium-silver: #eaeae8; /* Silver medal */
+	--podium-bronze: #f7caa0 /* Bronze medal */
+}
+
+body {margin: 0}
+
+/* Main container */
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 8px
+}
+
+/* Keyframes */
+
+/* Fade in */
+@-webkit-keyframes FadeIn {
+	from {
+		visibility: hidden;
+		opacity: 0
+	} to {
+		visibility: visible;
+		opacity: 1
+	}
+}
+@keyframes FadeIn {
+	from {
+		visibility: hidden;
+		opacity: 0
+	} to {
+		visibility: visible;
+		opacity: 1
+	}
+}
+
+/* Fade out */
+@-webkit-keyframes FadeOut {
+	from {
+		visibility: visible;
+		opacity: 1
+	} to {
+		visibility: hidden;
+		opacity: 0
+	}
+}
+@-webkit-keyframes FadeOut {
+	from {
+		visibility: visible;
+		opacity: 1
+	} to {
+		visibility: hidden;
+		opacity: 0
+	}
+}
+
+/* Media queries */
+
+/* 1140px max */
+@media screen and (max-width: 1140px) {
+	.GameContainer {max-width: 100%}
+}
+
+/* 968px max */
+@media screen and (max-width: 968px) {
+	.GameContainer {flex-direction: column}
+	.GameInnerContainer {max-width: 100%}
+	.ConnectedPlayersList {
+		flex-direction: row;
+		width: 100%;
+		margin-bottom: 8px
+	}
+	.ConnectedPlayersList .Player {
+		flex-grow: 1;
+		margin: 0 8px 0 0
+	}
+	.ConnectedPlayersList .Player:last-of-type {margin-right: 0}
+}
+
+/* 768px max */
+@media screen and (max-width: 768px) {
+	header {padding: 0 12px}
+	.Container {max-width: calc(100% - 16px)}
+	.Modal {max-width: 100%}
+}
+
+/* 600px max */
+@media screen and (max-width: 600px) {
+	.GameContainer {width: 100%}
+	.GameInnerContainer2 {flex-direction: column}
+	.GameInnerContainer3 {
+		margin: 0 0 8px 0;
+		text-align: center
+	}
+	#Canvas {
+		width: 150px;
+		margin: auto
+	}
+	.ChatContainer {width: 100%}
+}
+
+/* 480px max */
+@media screen and (max-width: 480px) {
+	#MaxRoundsInput {width: 100%}
+}

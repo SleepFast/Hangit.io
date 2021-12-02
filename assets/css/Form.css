@@ -1,0 +1,136 @@
+/** Form content **/
+
+/* Inputs */
+
+input {
+	-webkit-appearance: none;
+	display: block;
+	outline: none;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	transition-duration: 0.2s
+}
+/* Text inputs */
+input[type="text"]:not(#InvitationLinkInput, #MessageInput) {
+	width: 100%;
+	padding: 4px 0;
+	border: none;
+	border-radius: 0;
+	border-bottom: 2px solid var(--primary);
+	font-size: 16px
+}
+
+/* Specific inputs */
+
+/* Nickname */
+
+#NicknameInput {
+	opacity: 0.65;
+	color: #fff
+}
+#NicknameInput.focused {opacity: 1}
+
+/* Range input for round max number */
+
+#MaxRoundsInput {
+	width: 240px;
+	margin: 10px 0;
+	cursor: ew-resize
+}
+/* Range input track */
+#MaxRoundsInput::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 2px;
+	background-color: var(--primary)
+}
+#MaxRoundsInput::-moz-range-track {
+	width: 100%;
+	height: 2px;
+	background-color: var(--primary)
+}
+#MaxRoundsInput::-ms-track {
+	width: 100%;
+	height: 2px;
+	background-color: var(--primary)
+}
+/* Range input thumb */
+#MaxRoundsInput::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 16px;
+	height: 16px;
+	margin-top: -7px;
+	border: none;
+	border-radius: 50%;
+	background-color: var(--primary);
+	transition-duration: 0.2s
+}
+#MaxRoundsInput::-moz-range-thumb {
+	width: 16px;
+	height: 16px;
+	border: none;
+	border-radius: 50%;
+	background-color: var(--primary);
+	transition-duration: 0.2s
+}
+#MaxRoundsInput::-ms-thumb {
+	width: 16px;
+	height: 16px;
+	border: none;
+	border-radius: 50%;
+	background-color: var(--primary);
+	transition-duration: 0.2s
+}
+/* Hover animations for input thumb */
+#MaxRoundsInput:hover::-webkit-slider-thumb {box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)}
+#MaxRoundsInput:hover::-moz-range-thumb {box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)}
+#MaxRoundsInput:hover::-ms-thumb {box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)}
+
+/* Submit word */
+
+#WordInput {
+	opacity: 0.65;
+	color: var(--primary)
+}
+#WordInput.focused {opacity: 1}
+
+/* Labels */
+
+/* For text inputs */
+label.TextLabel {
+	top: -24px;
+	position: relative;
+	opacity: 0.65;
+	color: var(--primary);
+	pointer-events: none;
+	font-size: 16px;
+	transition-duration: 0.2s
+}
+input.focused ~ label.TextLabel {
+	top: -44px;
+	opacity: 1;
+	font-size: 12px
+}
+/* For range inputs */
+label.RangeLabel {color: var(--secondary)}
+
+/* Range value */
+.RangeValue {
+	margin-left: 6px;
+	padding: 0 4px;
+	border-radius: 4px;
+	background-color: var(--primary-light)
+}
+
+/* Input spans */
+.InputInfo, .RepeatedNicknamesTip {
+	top: -14px;
+	position: relative;
+	font-size: 14px;
+	font-style: italic
+}
+.InputInfo {color: var(--secondary)}
+.RepeatedNicknamesTip {
+	display: none;
+	color: var(--invalid)
+}

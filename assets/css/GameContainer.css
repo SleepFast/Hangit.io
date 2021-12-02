@@ -1,0 +1,48 @@
+/** Game content **/
+
+.GameContainer {
+	display: none;
+	width: 1000px
+}
+
+.ConnectedPlayersList {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	margin-right: 8px
+}
+
+.ConnectedPlayersList .Player {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 8px;
+	padding: 4px 8px;
+	overflow: hidden;
+	border-radius: 8px;
+	background-color: var(--primary-light);
+	text-overflow: ellipsis
+}
+
+.ConnectedPlayersList .PlayerNickname {font-size: 18px}
+
+.ConnectedPlayersList .PlayerScore {
+	opacity: 0.5;
+	font-size: 14px
+}
+
+.GameInnerContainer {
+	flex-grow: 1;
+	margin: 0 0 16px 0;
+	padding: 8px;
+	border-radius: 8px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	background-color: #fff
+}
+
+.GameInnerContainer2 {display: flex}
+
+.GameInnerContainer3 {
+	flex-grow: 1;
+	min-width: 0;
+	margin-right: 8px
+}

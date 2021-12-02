@@ -1,0 +1,9 @@
+.RoundIndicator {
+	margin-bottom: 8px;
+	padding: 8px;
+	border-radius: 4px;
+	background-color: var(--primary-light);
+	color: var(--secondary);
+	text-align: center;
+	font-size: 18px
+}
