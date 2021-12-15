@@ -237,7 +237,7 @@ let readyPlayers = [],
 Button.openHostForm.addEventListener("click", () => {
 	invitationLink = GenerateLink();
 	current_url += `?g=${invitationLink}`;
-	Input.invitationLink.value = `https://SleepFast/Hangit.io/?g=${invitationLink}`;
+	Input.invitationLink.value = `https://sleepfast.github.io/Hangit.io/?g=${invitationLink}`;
 	// Input.invitationLink.value = `http://localhost/hangit.io/?g=${invitationLink}`;
 	// Create game
 	sendData("link_game", invitationLink);
