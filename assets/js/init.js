@@ -48,7 +48,7 @@ const Player = {
 			joinGame: "ℹ️ Si vous voulez rejoindre une partie, demandez à l'hébergeur de vous envoyer un lien d'invitation.",
 			invalidLink: "⚠️ Ce lien n'est pas valide. Demandez à l'hébergeur de vous renvoyer un autre lien.",
 			commandPrefix: "ℹ️ Précédez vos propositions de lettres et de mots par \"!\" pour qu'elles soient interprétées.",
-			finishedGame: "🚪 L'hébergeur a terminé la partie.<br><a href='https://matteoo34.github.io/hangit.io'>Actualisez la page</a> pour en commencer une nouvelle."
+			finishedGame: "🚪 L'hébergeur a terminé la partie.<br><a href='https://sleepfast.github.io/Hangit.io'>Actualisez la page</a> pour en commencer une nouvelle."
 		},
 		eligibleChars: "❌ Le mot peut contenir uniquement des caractères alphabétiques, des espaces et des tirets (-).",
 		invalidLetter: "⛔ Cette lettre n'est pas dans le mot !",
@@ -361,7 +361,7 @@ Input.nickname.nextElementSibling.style.color = Player.nicknameColor;
 document.documentElement.style.setProperty("--nickname-color", Player.nicknameColor);
 document.documentElement.style.setProperty("--nickname-color-light", `${Player.nicknameColor}30`);
 // Restart game
-Button.restart.addEventListener("click", () => {location.href = "https://matteoo34.github.io/hangit.io"});
+Button.restart.addEventListener("click", () => {location.href = "https://sleepfast.github.io/Hangit.io"});
 // Window resize function on load & resize
 addEventListener("load", resizeChat);
 addEventListener("resize", resizeChat)
